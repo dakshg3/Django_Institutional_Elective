@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+<h2>{{ usn|upper }}</h2>
+<h2>Your choices are:</h2>
+{% for i in choices %}
+<br>
+<h3>{{ i }}</h3>
+{% endfor %}
+
+{% endblock content %}

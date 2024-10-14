@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+                <h1>Enter Elective Choices</h1>
+                {% if usn %}
+                <h3>
+                   Welcome, {{ usn|upper }}
+                </h3>
+                <form action='/insertdata/' method='POST'>
+                        {% csrf_token %}
+                        <label style="display: none;">USN: </label>
+                        <input type='text'  value='{{ user.username }}' name='usn' style="display: none;"  readonly/>
+                        <br><br>
+                        {% for i in cno %}
+                        <label>Elective Choice:</label>
+                        <select required="required" class="btn btn-info dropdown-toggle" id = {{ i }}  name = {{ i }} >
+                                <option selected disabled>Choose here</option>
+                                {% for elective in options %}
+                                <option value = {{ elective.course_code }}>{{ elective.course_name }}</option>
+                                {% endfor %}
+                        </select>
+                        <br><br>
+                        {% endfor %}
+                        <input class="btn btn-info" style="width:150px;" type='submit' value='Save'/>
+
+
+                
+                </form>
+                {% else %}
+                <h3>You have already choosen your electives</h3>
+		<h3>Your Allocated Subject is : {{alloc}}</h3>
+                {% endif %}
+
+{% endblock content %}

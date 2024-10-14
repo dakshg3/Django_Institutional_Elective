@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<form id="myform" method="post" action="{% url 'social:disconnect' 'google-oauth2' %}9/?next={{request.path }}">
+    {% csrf_token %}
+    <input type="hidden" name="name" value="value" /> 
+    <a onclick="document.getElementById('myform').submit();">discon</a>
+</form>
+{% endblock content %}

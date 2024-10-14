@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+        <p class="display-4">Admin Login</p>
+        <br>
+<form method='POST' action='/adexport/'>
+    {% csrf_token %}
+    <label>User ID:</label>
+    <input type="text" id='id_user_id' name='id_user_id' required/>
+    <br><br>
+    <label>Password:</label>
+    <input type="password" id='id_user_pass' name='id_user_pass'required/>
+    <br><br>
+    <button class="btn btn-info" type='submit'>Login</button>
+</form>
+</div>
+{% endblock content %}

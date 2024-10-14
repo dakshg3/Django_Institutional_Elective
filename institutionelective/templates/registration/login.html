@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+      <p class="display-1">Hello, {{ user.username }}</p>
+      
+  {% else %}
+
+  <br>
+  <p class="display-4 text-center">Rules and Regulations</p>
+  <br> <br> <br>
+  <p align="justify">
+      1. Portal will open at {{hrs}}:{{mins}} on 19th December.<br>
+2. Login only through official BMSCE Email ID, submissions done through other IDs will not be considered.<br>
+3. You will be allowed to choose 5 electives according to your priorities.<br>
+4. Your elective subject will be allocated later based on availability, using First-Come-First-Serve.<br>
+5. You will be allocated the first priority elective if available, else you will be allocated subsequent available subjects.<br>
+6. You will be notified about your allocated subject by the respective Department.<br>
+7. Do not select the same subject as multiple priorities as repeated choices will not be considered.<br>
+</p>
+<br><br><br>
+
+<body id="body">
+  <p  class="text-center display-3">
+
+  {% load static %}
+{% comment %}
+{{curr}}{{currmins}}
+{% endcomment %}
+ {% if curr == hrs and currmins >= mins or curr > hrs %}
+  <a id='login' href="{% url 'social:begin' 'google-oauth2' %}"> <img style="width:400px; height:200px"  src="{% static 'electives/image.png' %}" /></a><br>
+ {% endif %}
+  </p>
+</body>
+  {% endif %}
+  
+
+  {% endblock content %}
